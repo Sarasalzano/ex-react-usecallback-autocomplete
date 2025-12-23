@@ -18,9 +18,12 @@ export default function Searchbar() {
   }
 
   useEffect(() => {
+    if (!query) {
+      setProducts([]);
+      return;
+    }
     dataFetch();
   }, [query]);
-
   return (
     <>
       <input
@@ -29,9 +32,13 @@ export default function Searchbar() {
         onChange={(e) => setQuery(e.target.value)}
       />
       <div>
-        <ul>
-          <li></li>
-        </ul>
+        {products.length > 0 && (
+          <ul>
+            {products.map((product) => {
+              return <li key={product.id}>{product.name}</li>;
+            })}
+          </ul>
+        )}
       </div>
     </>
   );
