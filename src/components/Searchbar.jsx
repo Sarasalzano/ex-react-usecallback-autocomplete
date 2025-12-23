@@ -61,12 +61,12 @@ export default function Searchbar() {
           handleSearch(e.target.value); // Chiama debounce per query
         }}
       />
-      <div>
+      <div className="autocomplete-wrapper">
         {/* Mostra lista solo se ci sono prodotti */}
         {products.length > 0 && (
-          <ul>
+          <ul className="items-list">
             {products.map((product) => (
-              <li key={product.id}>{product.name}</li>
+              <li key={product.id} className="item">{product.name}</li>
             ))}
           </ul>
         )}
